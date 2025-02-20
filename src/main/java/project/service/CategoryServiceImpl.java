@@ -16,6 +16,12 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
+    public Category create(Category category) {
+        Category save = repository.save(category);
+        return save;
+    }
+
+    @Override
     public List<Category> getAll() {
         List<Category> list = repository.findAll();
         return list;
@@ -23,9 +29,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category getById(Long id) {
-        Category category = repository.findById(id).orElseThrow(
-                () -> new NotFoundException("Category with id " + id + " not found")
-        );
+        Category category = repository.findById(id)
+                .orElseThrow(
+                        () -> new NotFoundException("Category with id " + id + " not found")
+                );
+
         return category;
     }
 }
