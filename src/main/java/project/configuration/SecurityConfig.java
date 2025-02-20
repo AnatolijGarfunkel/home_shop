@@ -35,6 +35,13 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/users/**").authenticated()
 
                         .requestMatchers(HttpMethod.POST, "api/accounts").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/accounts").authenticated()
+
+                        .requestMatchers(HttpMethod.POST, "/api/categories").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/categories/**").permitAll()
+
+                        .requestMatchers(HttpMethod.POST, "/api/products").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
 
 
 //                        .requestMatchers("/swagger-ui/**",
