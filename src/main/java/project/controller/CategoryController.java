@@ -30,21 +30,18 @@ public class CategoryController {
         Category entity = converter.toEntity(dto);
         Category category = service.create(entity);
         CategoryResponseDto responseDto = converter.toDto(category);
-        ResponseEntity<CategoryResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.CREATED);
-        return response;
+        return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<List<Category>> getAll() {
         List<Category> list = service.getAll();
-        ResponseEntity<List<Category>> response = ResponseEntity.ok(list);
-        return response;
+        return ResponseEntity.ok(list);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getById(@PathVariable Long id) {
         Category category = service.getById(id);
-        ResponseEntity<Object> response = ResponseEntity.ok(category);
-        return response;
+        return ResponseEntity.ok(category);
     }
 }

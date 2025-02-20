@@ -11,13 +11,11 @@ public class UserConverter implements Converter<User, UserCreateDto, UserRespons
 
     @Override
     public UserResponseDto toDto(User user) {
-        UserResponseDto dto = new UserResponseDto(user.getId(), user.getLogin());
-        return dto;
+        return new UserResponseDto(user.getId(), user.getLogin());
     }
 
     @Override
     public User toEntity(UserCreateDto dto) {
-        User user = new User(dto.getLogin(), dto.getPassword());
-        return user;
+        return new User(dto.getLogin(), dto.getPassword());
     }
 }

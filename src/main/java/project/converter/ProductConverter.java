@@ -19,13 +19,11 @@ public class ProductConverter implements Converter<Product, ProductCreateDto, Pr
     @Override
     public ProductResponseDto toDto(Product product) {
         CategoryResponseDto categoryDto = categoryConverter.toDto(product.getCategory());
-        ProductResponseDto dto = new ProductResponseDto(product.getId(), product.getName(), categoryDto);
-        return dto;
+        return new ProductResponseDto(product.getId(), product.getName(), categoryDto);
     }
 
     @Override
     public Product toEntity(ProductCreateDto dto) {
-        Product product = new Product(dto.getName(), dto.getPrice());
-        return product;
+        return new Product(dto.getName(), dto.getPrice());
     }
 }

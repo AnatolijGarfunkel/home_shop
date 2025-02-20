@@ -20,8 +20,7 @@ public class AccountConverter implements Converter<Account, AccountCreateDto, Ac
     public AccountResponseDto toDto(Account account) {
         User user = account.getUser();
         UserResponseDto userDto = userConverter.toDto(user);
-        AccountResponseDto dto = new AccountResponseDto(account.getId(), userDto, account.getAmount());
-        return dto;
+        return new AccountResponseDto(account.getId(), userDto, account.getAmount());
     }
 
     @Override

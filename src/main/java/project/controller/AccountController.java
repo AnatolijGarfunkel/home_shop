@@ -32,15 +32,13 @@ public class AccountController {
         User currentUser = service.getCurrentUser();
         Account account = service.create(new Account(BigDecimal.valueOf(1000), currentUser));
         AccountResponseDto dto = converter.toDto(account);
-        ResponseEntity<AccountResponseDto> response = new ResponseEntity<>(dto, HttpStatus.CREATED);
-        return response;
+        return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<AccountResponseDto> getFromCurrentUser() {
         Account account = service.get();
         AccountResponseDto dto = converter.toDto(account);
-        ResponseEntity<AccountResponseDto> response = new ResponseEntity<>(dto, HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 }
