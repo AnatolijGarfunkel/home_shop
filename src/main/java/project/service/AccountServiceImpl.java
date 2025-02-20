@@ -18,8 +18,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Account create(Account account) {
-        Account save = repository.save(account);
-        return save;
+        return repository.save(account);
     }
 
     @Override
@@ -30,13 +29,11 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public Account get() {
         Long currentUserId = userService.getCurrentUserId();
-        Account account = repository.findByUserId(currentUserId);
-        return account;
+        return repository.findByUserId(currentUserId);
     }
 
     @Override
     public User getCurrentUser() {
-        User currentUser = userService.getCurrentUser();
-        return currentUser;
+        return userService.getCurrentUser();
     }
 }

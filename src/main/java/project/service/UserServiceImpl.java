@@ -32,8 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getByLogin(String login) {
-        User byLogin = repository.findByLogin(login);
-        return byLogin;
+        return repository.findByLogin(login);
     }
 
     @Override
@@ -41,8 +40,7 @@ public class UserServiceImpl implements UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null) {
             String name = authentication.getName();
-            User user = getByLogin(name);
-            return user;
+            return getByLogin(name);
         }
 
         return null;
@@ -54,8 +52,7 @@ public class UserServiceImpl implements UserService {
         if (authentication != null) {
             String name = authentication.getName();
             User userEntity = getByLogin(name);
-            Long id = userEntity.getId();
-            return id;
+            return userEntity.getId();
         }
         return null;
     }

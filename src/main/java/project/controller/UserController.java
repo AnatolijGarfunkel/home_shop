@@ -49,16 +49,15 @@ public class UserController {
     @PostMapping("/login")
     @Operation(summary = "User login", description = "вход пользователя в систему через имя и пароль")
     public JwtAuthenticationResponse login(@RequestBody SignInRequest request) {
-        JwtAuthenticationResponse response = authenticationService.authenticate(request);
-        return response;
+        return authenticationService.authenticate(request);
     }
 
     @GetMapping
     public ResponseEntity<UserResponseDto> getCurrentUser() {
         User currentUser = service.getCurrentUser();
         UserResponseDto responseDto = converter.toDto(currentUser);
-        ResponseEntity<UserResponseDto> response = ResponseEntity.ok(responseDto); //new ResponseEntity<>(responseDto, HttpStatus.OK);
-        return response;
+        //new ResponseEntity<>(responseDto, HttpStatus.OK);
+        return ResponseEntity.ok(responseDto);
     }
 }
 

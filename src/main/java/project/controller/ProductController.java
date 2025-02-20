@@ -33,22 +33,19 @@ public class ProductController {
         entity.setCategory(category);
         Product product = service.create(entity);
         ProductResponseDto responseDto = converter.toDto(product);
-        ResponseEntity<ProductResponseDto> response = new ResponseEntity<>(responseDto, HttpStatus.CREATED);
-        return response;
+        return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }
 
     @GetMapping
     public ResponseEntity<List<Product>> getAll() {
         List<Product> products = service.getAll();
-        ResponseEntity<List<Product>> response = new ResponseEntity<>(products, HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Product> getById(@PathVariable Long id) {
         Product product = service.getById(id);
-        ResponseEntity<Product> response = new ResponseEntity<>(product, HttpStatus.OK);
-        return response;
+        return new ResponseEntity<>(product, HttpStatus.OK);
     }
 }
 

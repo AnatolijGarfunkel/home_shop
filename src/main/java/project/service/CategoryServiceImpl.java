@@ -17,23 +17,20 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category create(Category category) {
-        Category save = repository.save(category);
-        return save;
+        return repository.save(category);
     }
 
     @Override
     public List<Category> getAll() {
-        List<Category> list = repository.findAll();
-        return list;
+        return repository.findAll();
     }
 
     @Override
     public Category getById(Long id) {
-        Category category = repository.findById(id)
+
+        return repository.findById(id)
                 .orElseThrow(
                         () -> new NotFoundException("Category with id " + id + " not found")
                 );
-
-        return category;
     }
 }

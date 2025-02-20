@@ -21,30 +21,26 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product create(Product product) {
-        Product save = repository.save(product);
-        return save;
+        return repository.save(product);
     }
 
     @Override
     public List<Product> getAll() {
-        List<Product> products = repository.findAll();
-        return products;
+        return repository.findAll();
     }
 
     @Override
     public Product getById(Long id) {
-        Product product = repository.findById(id)
+
+        return repository.findById(id)
                 .orElseThrow(
                         () -> new NotFoundException("Product with id " + id + " not found")
                 );
-
-        return product;
     }
 
     @Override
     public Category getCategoryByCategoryId(Long categoryId) {
-        Category category = categoryService.getById(categoryId);
-        return category;
+        return categoryService.getById(categoryId);
     }
 
 
