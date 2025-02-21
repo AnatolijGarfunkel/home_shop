@@ -22,7 +22,7 @@ public class CartItemsServiceImpl implements CartItemsService {
 
     @Override
     public CartItems add(Long cartId, Long productId, Integer quantity) {
-        CartItems item = getByCartIdByProductId(cartId, productId);
+        CartItems item = getByCartIdAndByProductId(cartId, productId);
         if (item != null) {
             item.setQuantity(item.getQuantity() + quantity);
         }
@@ -35,7 +35,7 @@ public class CartItemsServiceImpl implements CartItemsService {
     }
 
     @Override
-    public CartItems getByCartIdByProductId(Long cartId, Long productId) {
+    public CartItems getByCartIdAndByProductId(Long cartId, Long productId) {
         return repository.findByCartIdAndProductId(cartId, productId).orElse(null);
     }
 

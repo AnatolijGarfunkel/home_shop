@@ -26,7 +26,7 @@ public class CartServiceImpl implements CartService {
         Long cartId = cart.getId();
         CartItems item = cartItemsService.add(cartId, productId, quantity);
         cart.getItems().add(item);
-        return cart;
+        return repository.save(cart);
     }
 
     @Override
