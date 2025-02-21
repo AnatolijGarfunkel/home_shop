@@ -1,5 +1,6 @@
 package project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,7 @@ public class CartItems {
             name = "cart_id",
             referencedColumnName = "id"
     )
+    @JsonIgnore
     private Cart cart;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -30,5 +32,12 @@ public class CartItems {
     )
     private Product product;
 
-    private int quantity;
+    private Integer quantity;
+
+
+    public CartItems(Cart cart, Product product, Integer quantity) {
+        this.cart = cart;
+        this.product = product;
+        this.quantity = quantity;
+    }
 }

@@ -1,12 +1,11 @@
 package project.converter;
 
 import org.springframework.stereotype.Component;
-import project.dto.StorageCreateDto;
 import project.dto.StorageResponseDto;
 import project.entity.Storage;
 
 @Component
-public class StorageConverter implements Converter<Storage, StorageCreateDto, StorageResponseDto> {
+public class StorageConverter implements ResponseConverter<Storage, StorageResponseDto> {
 
 
     @Override
@@ -14,8 +13,4 @@ public class StorageConverter implements Converter<Storage, StorageCreateDto, St
         return new StorageResponseDto(storage.getId(), storage.getProducts().getId(), storage.getProducts().getName(), storage.getQuantity());
     }
 
-    @Override
-    public Storage toEntity(StorageCreateDto storageCreateDto) {
-        return null;
-    }
 }

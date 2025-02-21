@@ -8,19 +8,22 @@
 
     </changeSet>
 
-    <include file="changelog-users.xml" relativeToChangelogFile="true"/>
-    <include file="changelog-accounts.xml" relativeToChangelogFile="true"/>
-    <include file="changelog-categories.xml" relativeToChangelogFile="true"/>
-    <include file="changelog-products.xml" relativeToChangelogFile="true"/>
+    <include relativeToChangelogFile="true" file="changelog-users.xml"/>
+    <include relativeToChangelogFile="true" file="changelog-accounts.xml"/>
+    <include relativeToChangelogFile="true" file="changelog-categories.xml"/>
+    <include relativeToChangelogFile="true" file="changelog-products.xml"/>
 
-    <include file="data-users.sql" relativeToChangelogFile="true"/>
-    <include file="data-accounts.sql" relativeToChangelogFile="true"/>
-    <include file="data-categories.sql" relativeToChangelogFile="true"/>
-    <include file="data-products.sql" relativeToChangelogFile="true"/>
+    <include relativeToChangelogFile="true" file="data-users.sql"/>
+    <include relativeToChangelogFile="true" file="data-accounts.sql"/>
+    <include relativeToChangelogFile="true" file="data-categories.sql"/>
+    <include relativeToChangelogFile="true" file="data-products.sql"/>
+
     <include file="db/changelog/changelog-storage.xml"/>
-    <include file="data-storage.sql" relativeToChangelogFile="true"/>
-    <include file="db/changelog/changelog-cart-items.xml"/>
+    <include relativeToChangelogFile="true" file="data-storage.sql"/>
+
     <include file="db/changelog/changelog-carts.xml"/>
+    <include file="db/changelog/changelog-cart-items.xml"/>
     <include relativeToChangelogFile="true" file="data-carts.sql"/>
+<!--    <include relativeToChangelogFile="true" file="data-cart-items.sql"/>-->
 
 </databaseChangeLog>

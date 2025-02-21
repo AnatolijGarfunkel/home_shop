@@ -13,26 +13,21 @@
             </column>
             <column name="cart_id" type="BIGINT"/>
             <column name="product_id" type="BIGINT"/>
-            <column name="quantity" type="INT">
-                <constraints nullable="false"/>
-            </column>
+            <column name="quantity" type="INT"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="1740151413411-2" author="Tolya">
-        <addUniqueConstraint columnNames="product_id" constraintName="uc_cart_items_product" tableName="cart_items"/>
-    </changeSet>
 
     <changeSet id="1740151413411-3" author="Tolya">
         <addForeignKeyConstraint baseColumnNames="cart_id" baseTableName="cart_items"
-                                 constraintName="FK_CART_ITEMS_ON_CART" referencedColumnNames="id"
-                                 referencedTableName="carts"/>
+                                 constraintName="FK_CART_ITEMS_ON_CART"
+                                 referencedColumnNames="id" referencedTableName="carts"/>
     </changeSet>
 
     <changeSet id="1740151413411-4" author="Tolya">
         <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="cart_items"
-                                 constraintName="FK_CART_ITEMS_ON_PRODUCT" referencedColumnNames="id"
-                                 referencedTableName="products"/>
+                                 constraintName="FK_CART_ITEMS_ON_PRODUCT"
+                                 referencedColumnNames="id" referencedTableName="products"/>
     </changeSet>
 
     <changeSet id="1740151520350-1" author="tolya">

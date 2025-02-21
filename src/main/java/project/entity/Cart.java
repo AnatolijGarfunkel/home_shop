@@ -1,5 +1,6 @@
 package project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class Cart {
             name = "user_id",
             referencedColumnName = "id"
     )
+    @JsonIgnore
     private User user;
 
     @OneToMany(mappedBy = "cart")

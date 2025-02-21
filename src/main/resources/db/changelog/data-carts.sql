@@ -1,3 +1,3 @@
 insert into carts (user_id)
-values      (1),
-            (2);
+values      (2),
+            (3);
