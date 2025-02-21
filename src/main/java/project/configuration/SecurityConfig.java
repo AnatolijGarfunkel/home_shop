@@ -46,6 +46,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/storage/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/storage/**").hasRole("ADMIN")
 
+                        .requestMatchers(HttpMethod.PUT, "/api/carts").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/carts").authenticated()
+
 
 //                        .requestMatchers("/swagger-ui/**",
 //                                "/v3/api-docs/**",

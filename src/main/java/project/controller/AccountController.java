@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import project.converter.Converter;
-import project.dto.AccountCreateDto;
+import project.converter.ResponseConverter;
 import project.dto.AccountResponseDto;
 import project.entity.Account;
 import project.entity.User;
@@ -24,7 +23,7 @@ public class AccountController {
     private AccountService service;
 
     @Autowired
-    private Converter<Account, AccountCreateDto, AccountResponseDto> converter;
+    private ResponseConverter<Account, AccountResponseDto> converter;
 
 
     @PostMapping

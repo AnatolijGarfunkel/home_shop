@@ -4,8 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import project.converter.Converter;
-import project.dto.StorageCreateDto;
+import project.converter.ResponseConverter;
 import project.dto.StorageResponseDto;
 import project.entity.Storage;
 import project.service.StorageService;
@@ -21,7 +20,7 @@ public class StorageController {
     private StorageService service;
 
     @Autowired
-    private Converter<Storage, StorageCreateDto, StorageResponseDto> converter;
+    private ResponseConverter<Storage, StorageResponseDto> converter;
 
 
     @PutMapping("/addQuantity")
