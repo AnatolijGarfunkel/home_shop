@@ -17,5 +17,7 @@
     <include file="data-accounts.sql" relativeToChangelogFile="true"/>
     <include file="data-categories.sql" relativeToChangelogFile="true"/>
     <include file="data-products.sql" relativeToChangelogFile="true"/>
+    <include file="db/changelog/changelog-storage.xml"/>
+    <include file="data-storage.sql" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
