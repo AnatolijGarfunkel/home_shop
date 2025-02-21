@@ -19,5 +19,8 @@
     <include file="data-products.sql" relativeToChangelogFile="true"/>
     <include file="db/changelog/changelog-storage.xml"/>
     <include file="data-storage.sql" relativeToChangelogFile="true"/>
+    <include file="db/changelog/changelog-cart-items.xml"/>
+    <include file="db/changelog/changelog-carts.xml"/>
+    <include relativeToChangelogFile="true" file="data-carts.sql"/>
 
 </databaseChangeLog>

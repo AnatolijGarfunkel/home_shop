@@ -1,5 +1,6 @@
 package project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,10 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Role role = Role.ROLE_CLIENT;
+
+    @OneToOne(mappedBy = "user")
+    @JsonIgnore
+    private Cart cart;
 
 
     public User(String login, String password) {
