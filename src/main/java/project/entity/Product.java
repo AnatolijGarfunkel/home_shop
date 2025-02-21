@@ -1,5 +1,6 @@
 package project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +28,7 @@ public class Product {
     private Category category;
 
     @OneToOne(mappedBy = "products")
+    @JsonIgnore
     private Storage storage;
 
 

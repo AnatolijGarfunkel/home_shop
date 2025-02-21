@@ -24,4 +24,9 @@ public class Storage {
     private Product products;
 
     private Integer quantity;
+
+    public Storage(Product products, Integer quantity) {
+        this.products = products;
+        this.quantity = quantity;
+    }
 }
