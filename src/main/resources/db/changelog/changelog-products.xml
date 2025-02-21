@@ -29,6 +29,13 @@
         </createIndex>
     </changeSet>
 
-<!--    <include file="changelog-products.xml" relativeToChangelogFile="true"/>-->
+    <changeSet id="1740143482993-1" author="Tolya">
+        <addColumn tableName="products">
+            <column name="storage_id" type="bigint"></column>
+        </addColumn>
+    </changeSet>
+
+
+    <!--    <include file="changelog-products.xml" relativeToChangelogFile="true"/>-->
 
 </databaseChangeLog>

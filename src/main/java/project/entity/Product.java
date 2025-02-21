@@ -26,6 +26,9 @@ public class Product {
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
 
+    @OneToOne(mappedBy = "products")
+    private Storage storage;
+
 
     public Product(String name, BigDecimal price) {
         this.name = name;
