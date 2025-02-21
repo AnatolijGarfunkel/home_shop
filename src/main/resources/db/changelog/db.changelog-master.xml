@@ -24,6 +24,5 @@
     <include file="db/changelog/changelog-carts.xml"/>
     <include file="db/changelog/changelog-cart-items.xml"/>
     <include relativeToChangelogFile="true" file="data-carts.sql"/>
-<!--    <include relativeToChangelogFile="true" file="data-cart-items.sql"/>-->
 
 </databaseChangeLog>
