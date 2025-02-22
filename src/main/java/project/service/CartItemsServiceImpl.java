@@ -41,7 +41,45 @@ public class CartItemsServiceImpl implements CartItemsService {
 
     @Override
     public void deteleItems(Long cartId) {
-        repository.getCartItemsByCartId(cartId);
-
+        repository.deleteAllByCartId(cartId);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

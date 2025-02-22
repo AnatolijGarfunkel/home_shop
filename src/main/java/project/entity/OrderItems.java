@@ -37,4 +37,12 @@ public class OrderItems {
     private Integer quantity;
 
     private BigDecimal itemPrice;
+
+
+    public OrderItems(Order order, Product product, Integer quantity, BigDecimal itemPrice) {
+        this.order = order;
+        this.product = product;
+        this.quantity = quantity;
+        this.itemPrice = itemPrice;
+    }
 }

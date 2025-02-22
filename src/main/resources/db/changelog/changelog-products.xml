@@ -35,7 +35,4 @@
         </addColumn>
     </changeSet>
 
-
-    <!--    <include file="changelog-products.xml" relativeToChangelogFile="true"/>-->
-
 </databaseChangeLog>

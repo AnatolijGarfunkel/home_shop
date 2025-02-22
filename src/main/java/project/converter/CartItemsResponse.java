@@ -16,9 +16,6 @@ public class CartItemsResponse implements ResponseConverter<CartItems, CartItems
         BigDecimal price = cartItems.getProduct().getPrice();
         BigDecimal itemPrice = price.multiply(BigDecimal.valueOf(cartItems.getQuantity()));
         return new CartItemsResponseDto(
-                cartItems.getId(),
-                cartItems.getCart().getId(),
-                cartItems.getProduct().getId(),
                 cartItems.getProduct().getName(),
                 cartItems.getProduct().getPrice(),
                 cartItems.getQuantity(),

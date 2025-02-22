@@ -16,10 +16,6 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="1740143735912-2" author="Tolya">
-        <addUniqueConstraint columnNames="product_id" constraintName="uc_storage_product" tableName="storage"/>
-    </changeSet>
-
     <changeSet id="1740143735912-3" author="Tolya">
         <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="storage"
                                  constraintName="FK_STORAGE_ON_PRODUCT" referencedColumnNames="id"

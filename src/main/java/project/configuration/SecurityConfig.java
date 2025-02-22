@@ -49,6 +49,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/carts").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/carts").authenticated()
 
+                        .requestMatchers(HttpMethod.PUT, "/api/orders").authenticated()
+
+
 
 //                        .requestMatchers("/swagger-ui/**",
 //                                "/v3/api-docs/**",

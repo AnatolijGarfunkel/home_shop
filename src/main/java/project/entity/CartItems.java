@@ -17,7 +17,7 @@ public class CartItems {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(
             name = "cart_id",
             referencedColumnName = "id"
