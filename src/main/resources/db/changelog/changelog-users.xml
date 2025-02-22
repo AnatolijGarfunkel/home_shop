@@ -19,6 +19,5 @@
         </createTable>
     </changeSet>
 
-<!--    <include file="changelog-users.xml" relativeToChangelogFile="true"/>-->
 
 </databaseChangeLog>

@@ -32,4 +32,9 @@ public class Order {
     private List<OrderItems> items;
 
     private BigDecimal totalPrice;
+
+
+    public Order(User user) {
+        this.user = user;
+    }
 }

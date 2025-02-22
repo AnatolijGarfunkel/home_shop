@@ -16,10 +16,6 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="1740225544912-2" author="Tolya">
-        <addUniqueConstraint columnNames="user_id" constraintName="uc_orders_user" tableName="orders"/>
-    </changeSet>
-
     <changeSet id="1740225544912-3" author="Tolya">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="orders" constraintName="FK_ORDERS_ON_USER"
                                  referencedColumnNames="id" referencedTableName="shop_users"/>

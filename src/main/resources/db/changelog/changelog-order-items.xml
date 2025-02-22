@@ -18,10 +18,6 @@
         </createTable>
     </changeSet>
     
-    <changeSet id="1740225718499-2" author="Tolya">
-        <addUniqueConstraint columnNames="product_id" constraintName="uc_order_items_product" tableName="order_items"/>
-    </changeSet>
-    
     <changeSet id="1740225718499-3" author="Tolya">
         <addForeignKeyConstraint baseColumnNames="order_id" baseTableName="order_items"
                                  constraintName="FK_ORDER_ITEMS_ON_ORDER" referencedColumnNames="id"
@@ -47,3 +43,42 @@
     </changeSet>
 
 </databaseChangeLog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
