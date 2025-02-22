@@ -46,12 +46,8 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public Cart deleteItems() {
-        Long userId = userService.getCurrentUserId();
-        Cart cart = getByUserId(userId);
-        Long cartId = cart.getId();
-        cartItemsService.deteleItems(cartId);
-        return null;
+    public void deleteItems(Cart cart) {
+        cartItemsService.deteleItems(cart.getId());
     }
 
     @Override

@@ -6,18 +6,25 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.17.xsd"
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
 
-    <changeSet id="1740151712483-1" author="Tolya">
-        <createTable tableName="carts">
+    <changeSet id="1740225544912-1" author="Tolya">
+        <createTable tableName="orders">
             <column autoIncrement="true" name="id" type="BIGINT">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_carts"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_orders"/>
             </column>
             <column name="user_id" type="BIGINT"/>
+            <column name="total_price" type="DECIMAL"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="1740151712483-3" author="Tolya">
-        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="carts" constraintName="FK_CARTS_ON_USER"
+    <changeSet id="1740225544912-3" author="Tolya">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="orders" constraintName="FK_ORDERS_ON_USER"
                                  referencedColumnNames="id" referencedTableName="shop_users"/>
+    </changeSet>
+
+    <changeSet id="1740225808301-1" author="tolya">
+        <createIndex tableName="orders" indexName="idx_orders_users_id">
+            <column name="user_id"></column>
+        </createIndex>
     </changeSet>
 
 </databaseChangeLog>
