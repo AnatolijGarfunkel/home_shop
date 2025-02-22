@@ -6,6 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import project.entity.Account;
+import project.entity.Cart;
 import project.entity.User;
 import project.repository.UserRepository;
 
@@ -20,13 +21,18 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    private CartService cartService;
+
 
     @Transactional
     @Override
     public User register(User user) {
         User save = repository.save(user);
         Account account = new Account(BigDecimal.valueOf(1000), save);
+        Cart cart = new Cart(save);
         accountService.create(account);
+        cartService.create(cart);
         return save;
     }
 
