@@ -4,6 +4,8 @@ import project.entity.Cart;
 
 public interface CartService {
 
+    Cart create(Cart cart);
+
     Cart add(Long productId, Integer quantity);
 
     Cart getByUserId(Long id);
@@ -13,4 +15,5 @@ public interface CartService {
     Cart deleteItems();
 
     Cart getById(Long cartId);
+
 }
