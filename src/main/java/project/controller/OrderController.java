@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import project.converter.OrderResponse;
+import project.dto.OrderResponseDto;
 import project.entity.Order;
 import project.service.OrderService;
 
@@ -16,10 +18,14 @@ public class OrderController {
     @Autowired
     private OrderService service;
 
+    @Autowired
+    private OrderResponse converter;
+
 
     @PostMapping
-    public ResponseEntity<Order> create() {
+    public ResponseEntity<OrderResponseDto> create() {
         Order order = service.create();
-        return new ResponseEntity<>(order, HttpStatus.CREATED);
+        OrderResponseDto dto = converter.toDto(order);
+        return new ResponseEntity<>(dto, HttpStatus.CREATED);
     }
 }

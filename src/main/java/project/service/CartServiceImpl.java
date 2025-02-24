@@ -48,6 +48,7 @@ public class CartServiceImpl implements CartService {
     @Override
     public void deleteItems(Cart cart) {
         cartItemsService.deteleItems(cart.getId());
+        cart.getItems().removeAll(cart.getItems());
     }
 
     @Override

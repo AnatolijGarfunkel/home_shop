@@ -8,11 +8,11 @@ import java.util.List;
 
 @AllArgsConstructor
 @Getter
-public class CartResponseDto {
+public class OrderResponseDto {
 
-    private Long userId;
+    private Long id;
 
-    private List<CartItemsResponseDto> cartItems;
+    private List<OrderItemsResponseDto> items;
 
     private BigDecimal totalPrice;
 }

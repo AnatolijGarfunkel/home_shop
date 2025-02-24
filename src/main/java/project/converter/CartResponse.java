@@ -30,7 +30,6 @@ public class CartResponse implements ResponseConverter<Cart, CartResponseDto> {
         }
 
         return new CartResponseDto(
-                cart.getId(),
                 cart.getUser().getId(),
                 itemsResponseDtos,
                 totalPrice

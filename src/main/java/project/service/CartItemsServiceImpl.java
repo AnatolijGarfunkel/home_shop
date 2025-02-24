@@ -7,8 +7,6 @@ import project.entity.CartItems;
 import project.entity.Product;
 import project.repository.CartItemsRepository;
 
-import java.util.List;
-
 @Service
 public class CartItemsServiceImpl implements CartItemsService {
 
@@ -43,7 +41,6 @@ public class CartItemsServiceImpl implements CartItemsService {
 
     @Override
     public void deteleItems(Long cartId) {
-        List<CartItems> cartItems = repository.findByCartId(cartId);
-        repository.deleteAll(cartItems);
+        repository.deleteAllByCartId(cartId);
     }
 }
