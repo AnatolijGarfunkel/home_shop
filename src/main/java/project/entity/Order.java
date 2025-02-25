@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import project.enums.OrderStatus;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -32,6 +33,9 @@ public class Order {
     private List<OrderItems> items;
 
     private BigDecimal totalPrice;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status = OrderStatus.PENDING;
 
 
     public Order(User user) {
