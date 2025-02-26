@@ -24,7 +24,8 @@ public class OrderResponse implements ResponseConverter<Order, OrderResponseDto>
         return new OrderResponseDto(
                 order.getId(),
                 items,
-                order.getTotalPrice()
+                order.getTotalPrice(),
+                order.getStatus()
         );
     }
 }

@@ -6,6 +6,8 @@ import project.entity.Account;
 import project.entity.User;
 import project.repository.AccountRepository;
 
+import java.math.BigDecimal;
+
 @Service
 public class AccountServiceImpl implements AccountService {
 
@@ -15,6 +17,14 @@ public class AccountServiceImpl implements AccountService {
     @Autowired
     private UserService userService;
 
+
+    @Override
+    public void toPay(Long userId, BigDecimal totalPrice) {
+        Account account = repository.findByUserId(userId);
+        BigDecimal subtract = account.getAmount().subtract(totalPrice);
+        account.setAmount(subtract);
+        repository.save(account);
+    }
 
     @Override
     public Account create(Account account) {
@@ -36,4 +46,5 @@ public class AccountServiceImpl implements AccountService {
     public User getCurrentUser() {
         return userService.getCurrentUser();
     }
+
 }
