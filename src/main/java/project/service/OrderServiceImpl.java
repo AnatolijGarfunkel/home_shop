@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import project.entity.Order;
 import project.entity.OrderItems;
 import project.entity.User;
+import project.enums.OrderStatus;
 import project.repository.OrderRepository;
 
 import java.math.BigDecimal;
@@ -43,8 +44,25 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order get() {
-        return null;
+    public List<Order> get() {
+        Long userId = userService.getCurrentUserId();
+        return getAllByUserId(userId);
+    }
+
+    @Override
+    public Order getByUserIdAndPending(Long userId) {
+        return repository.findByUserIdAndStatusContains(userId, OrderStatus.PENDING);
+    }
+
+    @Override
+    public List<Order> getAllByUserId(Long userId) {
+        return repository.findAllByUserId(userId);
+    }
+
+    @Override
+    public void setStatusProcessing(Order order) {
+        order.setStatus(OrderStatus.PROCESSING);
+        repository.save(order);
     }
 
     private Long getCurrentUserId() {
