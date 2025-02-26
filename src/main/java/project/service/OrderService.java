@@ -15,4 +15,12 @@ public interface OrderService {
     List<Order> getAllByUserId(Long userId);
 
     void setStatusProcessing(Order order);
+
+    void checkPaid();
+
+    void checkPayments();
+
+    List<Order> getAllByPaid();
+
+    Order update(Order order);
 }

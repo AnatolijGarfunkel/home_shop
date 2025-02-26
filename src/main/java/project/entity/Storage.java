@@ -21,12 +21,12 @@ public class Storage {
             name = "product_id",
             referencedColumnName = "id"
     )
-    private Product products;
+    private Product product;
 
     private Integer quantity;
 
-    public Storage(Product products, Integer quantity) {
-        this.products = products;
+    public Storage(Product product, Integer quantity) {
+        this.product = product;
         this.quantity = quantity;
     }
 }

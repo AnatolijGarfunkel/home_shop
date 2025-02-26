@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import project.entity.Order;
 import project.entity.Payment;
 import project.enums.PaymentStatus;
+import project.exception.NotFoundException;
 import project.repository.PaymentRepository;
 
 import java.util.List;
@@ -25,15 +26,22 @@ public class PaymentServiceImpl implements PaymentService {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private AccountService accountService;
+
 
     @Transactional
     @Override
     public Payment toPay() {
         Long userId = userService.getCurrentUserId();
         Order order = orderService.getByUserIdAndPending(userId);
-        Payment payment = new Payment(order, PaymentStatus.PROCESSING);
-        orderService.setStatusProcessing(order);
-        return repository.save(payment);
+        if (order != null) {
+            accountService.toPay(userId, order.getTotalPrice());
+            Payment payment = new Payment(order, PaymentStatus.PROCESSING);
+            orderService.setStatusProcessing(order);
+            return repository.save(payment);
+        }
+        throw new NotFoundException("All orders are already paid");
     }
 
     @Override
@@ -46,15 +54,22 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
     @Override
+    public Payment getByOrderIdAndPaid(Long orderId) {
+        return repository.findByOrderIdAndStatus_Paid(orderId);
+    }
+
+    @Override
     @Scheduled(initialDelay = 15, fixedRate = 15, timeUnit = TimeUnit.SECONDS)
     public void setPay() {
-        List<Payment> payments = repository.findAll();
-        payments = payments.stream()
-                .filter(item -> item.getStatus().equals(PaymentStatus.PROCESSING))
-                .peek(payment -> payment.setStatus(PaymentStatus.PAID))
-                .toList();
-
-        repository.saveAll(payments);
+        List<Payment> payments = repository.findAllByStatusProcessing();
+        if (!payments.isEmpty()) {
+            payments.forEach(
+                    payment -> {
+                        payment.setStatus(PaymentStatus.PAID);
+                        repository.save(payment);
+                    }
+            );
+        }
     }
 }
 

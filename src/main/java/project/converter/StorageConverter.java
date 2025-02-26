@@ -10,7 +10,7 @@ public class StorageConverter implements ResponseConverter<Storage, StorageRespo
 
     @Override
     public StorageResponseDto toDto(Storage storage) {
-        return new StorageResponseDto(storage.getId(), storage.getProducts().getId(), storage.getProducts().getName(), storage.getQuantity());
+        return new StorageResponseDto(storage.getId(), storage.getProduct().getId(), storage.getProduct().getName(), storage.getQuantity());
     }
 
 }

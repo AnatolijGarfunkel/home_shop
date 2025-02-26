@@ -1,6 +1,5 @@
 package project.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,10 +25,6 @@ public class Product {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     private Category category;
-
-    @OneToOne(mappedBy = "products")
-    @JsonIgnore
-    private Storage storage;
 
 
     public Product(String name, BigDecimal price) {

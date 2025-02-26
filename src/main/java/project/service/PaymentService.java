@@ -10,5 +10,7 @@ public interface PaymentService {
 
     List<Payment> getAll();
 
+    Payment getByOrderIdAndPaid(Long orderId);
+
     void setPay();
 }

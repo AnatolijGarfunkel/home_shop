@@ -18,4 +18,7 @@ public interface StorageService {
     List<Storage> getAll();
 
     Storage getByProductId(Long id);
+
+    void toReduceProductQuantity();
+
 }
