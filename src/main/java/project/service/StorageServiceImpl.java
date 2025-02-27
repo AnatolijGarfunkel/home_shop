@@ -103,6 +103,12 @@ public class StorageServiceImpl implements StorageService {
             throw new NotAvailableException("There are " + quantityByProductId + " products available");
         }
     }
+
+    @Override
+    public void deleteByProductId(Long productId) {
+        Storage storage = getByProductId(productId);
+        repository.delete(storage);
+    }
 }
 
 

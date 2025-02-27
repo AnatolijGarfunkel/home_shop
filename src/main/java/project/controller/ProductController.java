@@ -27,11 +27,14 @@ public class ProductController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping
-    public ResponseEntity<ProductResponseDto> create(@RequestBody ProductCreateDto dto) {
+    public ResponseEntity<ProductResponseDto> create(
+            @RequestParam (name = "quantity", required = false, defaultValue = "0") Integer quantity,
+            @RequestBody ProductCreateDto dto
+    ) {
         Product entity = converter.toEntity(dto);
         Category category = service.getCategoryByCategoryId(dto.getCategoryId());
         entity.setCategory(category);
-        Product product = service.create(entity);
+        Product product = service.create(entity, quantity);
         ProductResponseDto responseDto = converter.toDto(product);
         return new ResponseEntity<>(responseDto, HttpStatus.CREATED);
     }
@@ -46,6 +49,13 @@ public class ProductController {
     public ResponseEntity<Product> getById(@PathVariable Long id) {
         Product product = service.getById(id);
         return new ResponseEntity<>(product, HttpStatus.OK);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+        service.delete(id);
+        return new ResponseEntity<>("Product with id " + id + " deleted", HttpStatus.OK);
     }
 }
 
