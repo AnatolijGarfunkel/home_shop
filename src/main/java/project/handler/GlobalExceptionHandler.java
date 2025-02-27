@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import project.exception.CartIsEmptyException;
-import project.exception.NotFoundException;
+import project.exception.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +27,17 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({CartIsEmptyException.class})
     public ResponseEntity<Object> handleCartIsEmptyException(Exception exception) {
-        return new ResponseEntity<>(exception.getMessage(), HttpStatus.NO_CONTENT);
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler({AlreadyPaidException.class})
+    public ResponseEntity<Object> handleAlreadyPaidException(Exception exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler({NotAvailableException.class})
+    public ResponseEntity<Object> handleNotAvailableException(Exception exception) {
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
     @Override

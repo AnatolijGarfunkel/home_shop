@@ -8,6 +8,7 @@ import project.entity.Order;
 import project.entity.Product;
 import project.entity.Storage;
 import project.enums.OrderStatus;
+import project.exception.NotAvailableException;
 import project.exception.NotFoundException;
 import project.repository.StorageRepository;
 
@@ -91,4 +92,54 @@ public class StorageServiceImpl implements StorageService {
                         }
                 );
     }
+
+    @Override
+    public void toCheckAvailibility(Long productId, Integer quantity) {
+
+        if (!repository.existsByProductIdAndQuantityIsNot(productId, 0))
+            throw new NotAvailableException("Product with id " + productId + " is not available");
+        if (!repository.existsByProductIdAndQuantityIsGreaterThanEqual(productId, quantity)) {
+            Integer quantityByProductId = repository.findQuantityByProductId(productId);
+            throw new NotAvailableException("There are " + quantityByProductId + " products available");
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

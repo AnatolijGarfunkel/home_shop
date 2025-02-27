@@ -49,7 +49,11 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/carts").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/carts").authenticated()
 
-                        .requestMatchers(HttpMethod.PUT, "/api/orders").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/orders").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/orders").authenticated()
+
+                        .requestMatchers(HttpMethod.POST, "/api/payments").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/payments").authenticated()
 
 
 
