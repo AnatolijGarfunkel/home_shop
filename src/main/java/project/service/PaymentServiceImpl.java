@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import project.entity.Order;
 import project.entity.Payment;
 import project.enums.PaymentStatus;
-import project.exception.NotFoundException;
+import project.exception.AlreadyPaidException;
 import project.repository.PaymentRepository;
 
 import java.util.List;
@@ -41,7 +41,7 @@ public class PaymentServiceImpl implements PaymentService {
             orderService.setStatusProcessing(order);
             return repository.save(payment);
         }
-        throw new NotFoundException("All orders are already paid");
+        throw new AlreadyPaidException("All orders are already paid");
     }
 
     @Override

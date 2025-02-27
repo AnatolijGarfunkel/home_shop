@@ -19,9 +19,13 @@ public class CartItemsServiceImpl implements CartItemsService {
     @Autowired
     private CartService cartService;
 
+    @Autowired
+    private StorageService storageService;
+
 
     @Override
     public CartItems add(Long cartId, Long productId, Integer quantity) {
+        storageService.toCheckAvailibility(productId, quantity);
         CartItems item = getByCartIdAndByProductId(cartId, productId);
         if (item != null) {
             item.setQuantity(item.getQuantity() + quantity);

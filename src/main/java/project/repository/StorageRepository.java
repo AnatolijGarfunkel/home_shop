@@ -14,4 +14,14 @@ public interface StorageRepository extends JpaRepository<Storage, Long> {
             value = "select * from storage where product_id = :productId"
     )
     Optional<Storage> findByProductId(Long productId);
+
+    boolean existsByProductIdAndQuantityIsNot(Long productId, Integer quantity);
+
+    @Query(
+            nativeQuery = true,
+            value = "select quantity from storage where product_id = :productId"
+    )
+    Integer findQuantityByProductId(Long productId);
+
+    boolean existsByProductIdAndQuantityIsGreaterThanEqual(Long productId, Integer quantityIsGreaterThan);
 }

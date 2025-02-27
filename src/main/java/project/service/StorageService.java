@@ -21,4 +21,5 @@ public interface StorageService {
 
     void toReduceProductQuantity();
 
+    void toCheckAvailibility(Long productId, Integer quantity);
 }
