@@ -15,4 +15,6 @@ public interface ProductService {
     Category getCategoryByCategoryId(Long categoryId);
 
     void delete(Long productId);
+
+    void toCheckAvailability(Long productId);
 }

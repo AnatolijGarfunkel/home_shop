@@ -1,11 +1,11 @@
 package project.service;
 
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.entity.Category;
 import project.entity.Product;
 import project.enums.ProductStatus;
+import project.exception.NotAvailableException;
 import project.exception.NotFoundException;
 import project.repository.ProductRepository;
 
@@ -50,11 +50,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    @Transactional
     public void delete(Long productId) {
         Product product = getById(productId);
         product.setStatus(ProductStatus.DELETED);
         repository.save(product);
+    }
+
+    @Override
+    public void toCheckAvailability(Long productId) {
+        Product product = getById(productId);
+        if (product.getStatus().equals(ProductStatus.DELETED))
+            throw new NotAvailableException("Product with id " + productId + " is not available");
     }
 
 }

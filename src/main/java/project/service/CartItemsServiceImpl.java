@@ -25,6 +25,7 @@ public class CartItemsServiceImpl implements CartItemsService {
 
     @Override
     public CartItems add(Long cartId, Long productId, Integer quantity) {
+        productService.toCheckAvailability(productId);
         storageService.toCheckAvailibility(productId, quantity);
         CartItems item = getByCartIdAndByProductId(cartId, productId);
         if (item != null) {
