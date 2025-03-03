@@ -14,6 +14,7 @@
             <column name="name" type="VARCHAR(255)"/>
             <column name="price" type="DECIMAL"/>
             <column name="category_id" type="BIGINT"/>
+            <column name="status" type="varchar(64)"/>
         </createTable>
     </changeSet>
 
@@ -25,14 +26,8 @@
 
     <changeSet id="1740005467503-1" author="tolya">
         <createIndex tableName="products" indexName="idx_products_category_id">
-            <column name="category_id"></column>
+            <column name="category_id"/>
         </createIndex>
     </changeSet>
-
-<!--    <changeSet id="1740143482993-1" author="Tolya">-->
-<!--        <addColumn tableName="products">-->
-<!--            <column name="storage_id" type="bigint"></column>-->
-<!--        </addColumn>-->
-<!--    </changeSet>-->
 
 </databaseChangeLog>

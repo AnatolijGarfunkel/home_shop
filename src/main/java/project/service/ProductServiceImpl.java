@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.entity.Category;
 import project.entity.Product;
+import project.enums.ProductStatus;
+import project.exception.NotAvailableException;
 import project.exception.NotFoundException;
 import project.repository.ProductRepository;
 
@@ -18,9 +20,13 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private StorageService storageService;
+
 
     @Override
-    public Product create(Product product) {
+    public Product create(Product product, Integer quantity) {
+        storageService.addProduct(product, quantity);
         return repository.save(product);
     }
 
@@ -43,5 +49,18 @@ public class ProductServiceImpl implements ProductService {
         return categoryService.getById(categoryId);
     }
 
+    @Override
+    public void delete(Long productId) {
+        Product product = getById(productId);
+        product.setStatus(ProductStatus.DELETED);
+        repository.save(product);
+    }
+
+    @Override
+    public void toCheckAvailability(Long productId) {
+        Product product = getById(productId);
+        if (product.getStatus().equals(ProductStatus.DELETED))
+            throw new NotAvailableException("Product with id " + productId + " is not available");
+    }
 
 }
